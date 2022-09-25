@@ -14,6 +14,9 @@
 //     TriangleIsosceles,
 // }
 
+// need to install num-traits crate to use square root
+// https://docs.rs/num-traits/latest/num_traits/float/trait.Float.html#tymethod.sqrt
+use num_traits::Float;
 
 struct Circle {
     radius: f64,
@@ -32,6 +35,20 @@ impl Circle {
     }
 }
 
+struct Rectangle {
+    base: f64,
+    height: f64,
+}
+
+impl Rectangle {
+    fn area(&self) -> f64 {
+        self.base * self.height
+    }
+    fn diagonal(&self) -> f64 {
+        (self.base * self.height).sqrt()
+    }
+}
+
 fn main() {
     // ------------ circulo ------------
     let circulo: Circle = Circle { radius: 100.0 };
@@ -40,6 +57,17 @@ fn main() {
     println!(
         "The circle circumference is {:?}",
         circulo.circumference().floor()
+    );
+
+    // ------------ retangulo ------------
+    let retangulo: Rectangle = Rectangle {
+        base: 2.0,
+        height: 4.0,
+    };
+    println!(
+        "The Rectangle area is {:?} and the diagonal is {}",
+        retangulo.area().floor(),
+        retangulo.diagonal()
     );
 
 }
