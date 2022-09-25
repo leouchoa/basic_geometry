@@ -49,6 +49,22 @@ impl Rectangle {
     }
 }
 
+struct TriangleEquilateral {
+    side: f64,
+}
+
+impl TriangleEquilateral {
+    fn area(&self) -> f64 {
+        let height: f64 = (self.side.powi(2) - (self.side / 2.0).powi(2)).sqrt();
+        (self.side * height) / 2.0
+    }
+    fn perimeter(&self) -> f64 {
+        3.0 * self.side
+    }
+}
+// struct TriangleIsosceles {}
+// struct TriangleScalene {}
+
 fn main() {
     // ------------ circulo ------------
     let circulo: Circle = Circle { radius: 100.0 };
@@ -70,4 +86,12 @@ fn main() {
         retangulo.diagonal()
     );
 
+    // ------------ triangulo equilatero ------------
+    let triangulo_equilatero = TriangleEquilateral { side: 5.0 };
+
+    println!(
+        "The Equilateral Triangle area is {:?} and the perimeter is {}",
+        triangulo_equilatero.area(),
+        triangulo_equilatero.perimeter(),
+    );
 }
